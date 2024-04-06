@@ -48,7 +48,6 @@ var
   cursorNSResize*: CursorHandle
 
 proc setCursor*(cursor: CursorHandle) =
-  echo "set cursor"
   window.setCursor(cursor)
 
 proc updateWindowSize() =

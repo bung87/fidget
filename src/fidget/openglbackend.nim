@@ -344,7 +344,6 @@ proc setupFidget(
     # Only set mouse style when it changes.
     if mouse.prevCursorStyle != mouse.cursorStyle:
       mouse.prevCursorStyle = mouse.cursorStyle
-      echo mouse.cursorStyle
       case mouse.cursorStyle:
         of Default:
           setCursor(cursorDefault)
@@ -466,7 +465,6 @@ when not defined(emscripten) and not defined(fidgetNoAsync):
     if url notin httpCalls:
       result = HttpCall()
       var client = newAsyncHttpClient()
-      echo "new call"
       result.future = client.getContent(url)
       result.future.addCallback(httpGetCb)
       httpCalls[url] = result
@@ -480,7 +478,6 @@ when not defined(emscripten) and not defined(fidgetNoAsync):
         result.data = result.future.read()
         result.json = parseJson(result.data)
       except HttpRequestError:
-        echo getCurrentExceptionMsg()
         result.status = Error
 
     return
